@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  login: 
+  password: 
+  phone: 
+  status: 1
+  access: 1
+
+two:
+  login: 
+  password: 
+  phone: 
+  status: 1
+  access: 1

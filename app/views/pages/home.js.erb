@@ -1,0 +1,13 @@
+$(document).ready(function(){ 
+ $('.edit').click( function(){
+	$(this).editable('http://unisoff.ru:3000/search', { 
+	  data :"{<% City.all.each do |c| %>'<%= c.id %>':'<%= c.param_name %>',<% end %> ,}",
+	  type   : 'select',
+	  editClass: 'resultItem',
+	  submit : 'OK',
+	  callback : function(settings){
+	  		return(settings)		
+	  		}
+	  });
+	})
+ })

@@ -1,0 +1,9 @@
+<%= render "layouts/top" %>
+<br /><br />
+
+<% @user.each do |c| %>
+  <span style='color: #c5c5c5;'><%= c.id %></span>
+  <%= c.login %>
+  <span style='color: #c5c5c5'><%= c.email %></span>
+  <%= link_to 'Delete', c, :method => :delete %> <br />
+<% end %> 

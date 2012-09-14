@@ -1,0 +1,9 @@
+<%= form_for(City.new) do |i| %>
+  <%= i.text_field :param_name %>
+  <%= i.submit 'Добавить город' %>		
+<% end %>
+<% @city.each do |c| %>
+		<span style='color: #c5c5c5;'><%= c.id %></span>
+  <%= c.param_name %>
+  <%= link_to 'Delete', c, :method => :delete %> <br />
+<% end %> 

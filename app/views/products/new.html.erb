@@ -1,0 +1,5 @@
+<h2>Создание объявления</h2>
+<%= form_for @product, :html => {:multipart => true} do |i| %>
+	<%= render 'form', :i => i %>
+<%= i.submit "Создать" %>
+<% end %>

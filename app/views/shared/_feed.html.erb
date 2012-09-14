@@ -1,0 +1,7 @@
+<% Product.from_users_followed_by(current_user).inspect %>
+<% unless @feed_items.nil? %>
+  <table class="microposts" summary="User microposts">
+      <%= render :partial => 'shared/feed_item', :collection => @feed_items %>
+  </table>
+<% end %>
+

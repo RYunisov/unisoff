@@ -1,0 +1,20 @@
+<header>
+<%= link_to logo, root_path %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to "На главную", root_path %></li>
+	  <li><%= link_to "Добавить объявление", new_path %></li>
+	  <% if signed_in? %>
+	  <li><%= link_to "Управление", admin_path if current_user.admin %></li>
+	  <li><%= link_to "Профиль", current_user %></li>
+	  <li><%= link_to "Закладки", edit_user_path(current_user) %></li>
+	  <% end %>
+	  <% if signed_in? %>
+	  <li><%= link_to "Выйти", signout_path, :method => :delete %></li>
+	  <% else %>
+			  <li><%= link_to "Войти", signin_path %> | <%= link_to "Регистрация", signup_path %></li>
+	  <% end %>
+	</ul>
+  </nav>
+
+</header>

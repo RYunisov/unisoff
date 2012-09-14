@@ -1,0 +1,293 @@
+.container {
+  width: 710px;
+}
+
+body {
+  background: whitesmoke url(/uploads/furley_bg.png) repeat;
+  font: 12px Verdana, Sans Serif;
+  text-shadow: 0px 1px white;
+}
+
+header {
+  padding-top: 20px;
+}
+
+header img {
+  padding: 1em;
+  background: #fff;
+}
+
+section {
+  font-size: 120%;
+  padding: 20px;
+}
+
+section h1 {
+  font-size: 200%;
+}
+
+section category {
+  display: block;
+  float: left;
+  width: -50px;
+  position: relative;
+}
+
+footer {
+  text-align: center;
+  margin-top: 10px;
+  width: 710px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer nav {
+  float: none;
+}
+
+h2 {
+  color: #5f5f5f;
+  font-family:Georgia;
+  font-style:italic;
+}
+
+div.field, div.action {
+  margin-bottom: 10px;
+}
+
+/* Links */
+
+a {
+  color: #4c4c4c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #069;
+  text-decoration: underline;
+}
+
+a:visited {
+ /* color: #069; */
+}
+
+.category ul li {
+  font: 11px Helvetic, Sans-serif;
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+.category ul li a {
+  color: #069;
+}
+
+.ctrl span a {
+  color: #B7AEB4;
+  font-size: 12px;
+}
+
+span a {
+/*  color: #B7AEB4; */
+}
+
+/* Navigation */
+.ctrl {
+  margin-bottom: 20px;
+}
+
+nav {
+  float: right;
+  }
+
+nav {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nav ul li a {
+  padding: 0 5px;
+}
+
+nav ul li a:visited {
+ /* color: #808080; */
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Sign up button */
+
+a.signup_button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  width: 190px;
+  color: #fff;
+  background: #006400;
+  font-size: 150%;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Round corners */
+
+.round {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+  background: whitesmoke;
+}
+/* User show page */
+
+table.profile {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+td.main {
+  width: 70%;
+  padding: 1em;
+}
+
+td.sidebar {
+  width: 30%;
+  padding: 1em;
+  vertical-align: top;
+  background: #ffc;
+}
+
+.profile img.gravatar {
+  border: 1px solid #999;
+  margin-bottom: -15px;
+}
+
+/* Product list page */
+
+.image {
+  display: block;
+  float: left;
+}
+
+.dt a, .dt {
+  font-size: 11px;
+  font-family: Verdana;
+  font-style: italic;
+  color: #5c5c5c;
+}
+
+b {
+  font-family: Verdana;		
+  color: #4c4c4c;
+}
+
+.ttl {
+  display: block;
+  width: 100%;	
+  color: #cfcfcf;
+  font-size: 1.0em;
+}
+
+/*Error*/
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+ul.user {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+/* Search Input */
+
+#query {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 35px;
+  border: 0px;
+  border-radius: 15px 15px 15px 15px;
+  padding: 0 10px;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #cfcfcf;
+  width: 95%;
+}
+.edit {
+  display:block; 
+  font:2.3em Georgia;
+  color: #5E5E5E;
+}
+
+.edit:hover {
+  color: #069;
+}
+
+.cleari {
+  display: inline-block;
+  height: 13px;
+  margin-left: -6%;
+  width: 13px;
+  background-image: url("//yandex.st/lego/_/nPnDgomeWxe-KjlcqHoT37B3-cQ.png");
+}
+
+.cleari.opacity {
+  opacity: 0.5;
+}

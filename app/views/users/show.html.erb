@@ -1,0 +1,46 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+			<h2 class="product"><i>Что новенького?</i></h2>
+      <%= render 'follow_form' if signed_in? %>
+	  <%= render 'shared/feed' %>
+    </td>
+    <td class="sidebar round">
+	<%= render 'shared/stats' %>
+      <strong>Имя</strong> <%= @user.login %><br />
+	  <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+	  <strong>Объявлений</strong> <%= @user.products.count %><br />
+	  <% if current_user?(@user) %>
+	   <b> <%= link_to "Настройки", edit_user_path(current_user) %></b>
+      <% end %>
+    </td>
+  <tr>
+</table>
+<br />
+
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+      </td>
+    </tr>
+  </table>
+<% else %>
+
+<b>Все объявления пользователя:</b><br />
+<% @product.each do |pro| %>
+  <%= image_tag(pro.image.thumb.url) if pro.image? %>
+  <%= pro.created_at.to_s[0..15] %>
+  <%= link_to pro.title, pro %>
+  <%= pro.price %> руб
+  <%= username(pro.user_id) %>
+  <% if !current_user.nil? %>
+      <% if current_user.admin? %>
+  |    <%= link_to "Удалить", pro, :method => :delete, 
+                                   :confirm => "Вы уверены?",
+                                   :title => "Удалить #{pro.title}" %>
+	    <% end %> 
+  <% end %>
+  <br />
+<% end %>
+<% end %>

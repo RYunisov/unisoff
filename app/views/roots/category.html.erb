@@ -1,0 +1,10 @@
+<%= render "layouts/top" %>                                 
+<%= form_for(Category.new) do |i| %>
+		<%= i.text_field :param_name %>
+		<%= i.submit 'Добавить категорию' %>
+<% end %>		
+<% @category.each do |c| %>                                     
+  <span style='color: #c5c5c5;'><%= c.id %></span>          
+  <%= c.param_name %>                                            
+  <%= link_to 'Delete', c, :method => :delete %> <br />     
+<% end %>                                                   

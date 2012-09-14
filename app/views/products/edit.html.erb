@@ -1,0 +1,8 @@
+<h2>Редактирование объявления</h2>
+<%= form_for(@product) do |i| %>
+<%= render 'shared/error_messages', :object => i.object %>
+<%= render 'form', :i => i %>
+<div class="actions">
+  <%= i.submit "Изменить" %>
+</div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="ctrl">
+<span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %> |
+<%= link_to 'Удалить', @product, :method => :delete,
+                                 :confirm => 'Вы уверены?',
+                                 :title => "Удалить #{@product.title}?" %></span>
+</div>
+<h2><%= @product.title %></h2>
+<%= @product.content %>
+<%= @product.price %>
+<%= @product.phone %> 
+<span style='float:right;'>
+<%= @product.email unless @product.email.nil? %> •		
+<%= link_to 'Еще', all_product_path(@product) %>
+</span><br />
+<%= image_tag(@product.image_url) if @product.image? %> 
+

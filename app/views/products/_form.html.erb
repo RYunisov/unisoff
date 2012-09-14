@@ -1,0 +1,37 @@
+<div class="field">
+ <%= i.label :title, 'Название:' %> <br />
+ <%= i.text_field :title %>
+</div>
+<div class="field">
+ <% unless current_user.nil? %>
+   <%= i.label :email, 'Email:' %> <br />
+   <%= i.text_field :email, :value => "#{current_user.email}" %>
+ <% else %>
+   <%= i.label :email, 'Email:' %> <br />                          
+   <%= i.text_field :email %>   
+ <% end%>		 
+</div>
+<div class="field">
+ <%= i.label :phone, 'Телефон:' %> <br />
+ <%= i.text_field :phone %>
+</div>
+<div class="field">
+ <%= select('product', 'category_id', Category.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
+</div>
+<div class="field">
+ <%= select('product', 'city_id', City.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
+</div>
+<div class="field">
+ <%= i.label :price, 'Стоимость:' %> <br />
+ <%= i.text_field :price %>
+</div>
+<div class="field">
+ <%= i.label :content, 'Описание:' %> <br />
+ <%= i.text_area :content %>
+</div>
+  <p>
+  <label>Добавить изображение</label> <br />
+    <%= image_tag(@product.image_url) if @product.image? %> 
+    <%= i.file_field :image %>
+	<%= i.hidden_field :image_cache %>
+  </p>

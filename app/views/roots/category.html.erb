@@ -1,7 +1,9 @@
 <%= render "layouts/top" %>                                 
 <%= form_for(Category.new) do |i| %>
-		<%= i.text_field :param_name %>
-		<%= i.submit 'Добавить категорию' %>
+    <% array = Category.all.map { |cat| [cat.param_name, cat.id] }%>
+    <%= i.select(:category_id, options_for_select(array), :include_blank => 'Null') %>
+	<%= i.text_field :param_name %>
+	<%= i.submit 'Добавить категорию' %>
 <% end %>		
 <% @category.each do |c| %>                                     
   <span style='color: #c5c5c5;'><%= c.id %></span>          

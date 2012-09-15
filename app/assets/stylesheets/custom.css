@@ -205,6 +205,10 @@ b {
   font-size: 1.0em;
 }
 
+td b {
+ color: #5E5E5E;
+}
+
 /*Error*/
 
 .field_with_errors {

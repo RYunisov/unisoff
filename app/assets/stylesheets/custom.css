@@ -57,14 +57,22 @@ div.field, div.action {
 
 /* Links */
 
+header nav a {
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: none;
+}
+
 a {
-  color: #4c4c4c;
+  color: #5E5E5E;
   text-decoration: none;
 }
 
 a:hover {
   color: #069;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:visited {
@@ -150,9 +158,9 @@ a.signup_button {
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
   background: whitesmoke;
 }
 /* User show page */

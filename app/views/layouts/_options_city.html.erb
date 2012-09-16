@@ -1,7 +1,7 @@
 <script type='text/javascript'>
 $(document).ready(function(){ 
  $('.edit').click( function(){
-	$(this).editable('http://unisoff.ru:3000/search', { 
+  $(this).editable('http://unisoff.ru:3000/search', { 
 	  data :"{<% City.all.each do |c| %>'<%= c.id %>':'<%= c.param_name %>',<% end %> '':'Все города',}",
 	  type   : 'select',
 	  editClass: 'resultItem',
@@ -16,4 +16,3 @@ $(document).ready(function(){
 <div style='display:block; float:right; margin-top: -40px;'>
 <span style='display:block; font:2.3em Georgia;'class='edit' id='edit' name='edit'><i><%= current_city.nil? ? 'Все города' : current_city.param_name  %></i></span>
 </div>
-<br /><br />

@@ -6,7 +6,18 @@ $(document).ready(function(){
  $('#query').focusout(function(){
     $(this).css({'color': '#f3f3f3', 'font-style':'italic'});
  })
-
+/*
+ $('#query').change(function(){
+ var i = document.getElementById('query').value;  
+   $.ajax({
+    type: 'GET',
+    url: 'www.unisoff.ru:3000/search',
+    data:  i    
+    }).done(function(data) {
+        console.log(data)
+        })
+ });
+*/ 
 })
 
 function fadeto(item) {

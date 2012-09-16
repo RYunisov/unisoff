@@ -1,8 +1,8 @@
 # encoding: utf-8
 class CategoriesController < ApplicationController
   def show
-    @cat = Category.find(params[:id])
-	@product = @cat.product
+    @product = Category.find(params[:id]).product
+	#@product = @cat.product
 	@category = Category.all
     render 'pages/home' 
   end

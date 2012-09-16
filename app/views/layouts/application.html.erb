@@ -10,6 +10,7 @@
     <div class = "container">
 	<%= render 'layouts/header' %>
 	<%= render 'layouts/options_city'%>
+    <span style='font:16px Georgia; margin:0px 20px;'><center><i>Бесплатные объявления о товарах и услугах</i></center></span>
     <section class="round">
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>

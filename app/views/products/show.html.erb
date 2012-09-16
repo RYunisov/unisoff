@@ -1,8 +1,9 @@
 <div class="ctrl">
-<span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %> |
+<span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %>
+<% if !current_user.nil? and current_user.admin? %>    |
 <%= link_to 'Удалить', @product, :method => :delete,
                                  :confirm => 'Вы уверены?',
-                                 :title => "Удалить #{@product.title}?" %></span>
+                             :title => "Удалить #{@product.title}?" %><% end %></span>
 </div>
 <h2><%= @product.title %></h2>
 <%= @product.content %>

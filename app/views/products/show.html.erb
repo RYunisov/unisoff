@@ -1,16 +1,19 @@
+<%= @product.city_id.nil? ? 'Все города' : @product.city.param_name %> 
+<%= '> '+@product.category.parent.param_name unless @product.category.parent.nil?%>
+<%= '> '+@product.category.param_name unless @product.category.nil? %>
 <div class="ctrl">
 <span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %>
 <% if !current_user.nil? and current_user.admin? %>    |
 <%= link_to 'Удалить', @product, :method => :delete,
                                  :confirm => 'Вы уверены?',
-                             :title => "Удалить #{@product.title}?" %><% end %></span>
+                                 :title => "Удалить #{@product.title}?" %><% end %></span>
 </div>
 <h2><%= @product.title %></h2>
 <%= @product.content %>
 <%= @product.price %>
 <%= @product.phone %> 
 <span style='float:right;'>
-<%= @product.email unless @product.email.nil? %> •		
+<%= @product.user.login unless @product.user.nil? %> •		
 <%= link_to 'Еще', all_product_path(@product) %>
 </span><br />
 <%= image_tag(@product.image_url) if @product.image? %> 

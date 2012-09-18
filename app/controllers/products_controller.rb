@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
  before_filter :correct_user, :only => [:edit, :update]
  before_filter :f_city, :except => [:update, :create, :show, :all_products ]
  before_filter :category
- before_filter :signed_user, :only => [:destroy] 
+ before_filter :signed_user, :only => [:destroy, :edit, :update] 
 
   def index
     if params[:query] and !current_city.nil? 
@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
     else
       @product = Product.search(params[:query])
     end  
-	@category = Category.all
 	render 'pages/home'
   end
 
@@ -39,25 +38,21 @@ class ProductsController < ApplicationController
   
   def show
     @product = Product.find(params[:id])
-	  @title = @product.title
-	  @category = Category.all
+    @title = @product.title
   end
   
   def edit
-    if signed_in?
-      @product = Product.find(params[:id])
-	else
-      redirect_to product_path, :notice => 'Не достаточно прав для редактирования'
-	end
-    @category = Category.all
+    @product = Product.find(params[:id])
   end
   
   def update
+   @product = Product.find(params[:id])
    if @product.update_attributes(params[:product])
-	   flash[:success] = "Объявление #{@product.title} отредактировано"
-	   redirect_to @product
+     flash[:success] = "Объявление #{@product.title} отредактировано"
+     redirect_to @product
    else
      render 'edit'
+     flash[:error] = 'Произошла ошибка'
    end
   end
   
@@ -75,7 +70,9 @@ class ProductsController < ApplicationController
 private
 
   def signed_user
-    redirect_to :back unless signed_in?
+    unless signed_in?
+      redirect_to :back, :notice => 'Не хватает прав, для редактирования' 
+    end
   end
 
   def category 
@@ -85,8 +82,8 @@ private
   def f_city
   	unless params[:value].nil? 
  	 unless params[:value].empty? 
-  	 cookies[:city_id] = params[:value]
-  	 @product = Product.where('city_id = ?', current_city.id)
+       cookies[:city_id] = params[:value]
+       @product = Product.where('city_id = ?', current_city.id)
 	   render :text => "<i>#{current_city.param_name}</i>"
 	 else
 	   cookies[:city_id] = nil
@@ -99,8 +96,8 @@ private
   end
 
   def correct_user
-   @product = Product.find(params[:id])
-   redirect_to product_path unless current_user.to_s.empty? or @product.user_id == current_user[:id] or current_user.admin
+    @user = Product.find(params[:id]).user
+    redirect_to product_path, :notice => 'Не хватает прав, для редактирования' unless current_user.to_s.empty? or @user == current_user or current_user.admin
   end
 
 end

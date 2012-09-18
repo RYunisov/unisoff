@@ -1,6 +1,5 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-# before_filter :authenticate, :only => [:index, :edit, :update]
   before_filter :authenticate, :except => [:show, :new, :create] 
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user, :only => [:destroy]
@@ -48,13 +47,13 @@ class UsersController < ApplicationController
 	@title = @user.login
 	@product = @user.products 
 	if signed_in? #&& !current_user.feed.nil?
-    	@feed_items = @user.feed.paginate(:page => params[:page])
+      @feed_items = @user.feed.paginate(:page => params[:page])
     end
   end
 
   def new
-	 @user = User.new
-     @title = "Создание нового пользователя"
+    @user = User.new
+    @title = "Создание нового пользователя"
   end
 
   def edit
@@ -92,7 +91,7 @@ private
  
   def check_signed
     if signed_in?
-      redirect_to root_path, :notice => "Не зачем повторятся, Вы уже зарегестированы"
+      redirect_to root_path, :notice => "Не зачем повторятся, Вы уже зарегистированы"
     end
   end
 

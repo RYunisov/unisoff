@@ -6,4 +6,6 @@ class Category < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Category', :foreign_key => 'category_id'
   has_many :child, :class_name => 'Category', :foreign_key => 'category_id'
 
+  default_scope :order => 'category_id ASC'
+
 end

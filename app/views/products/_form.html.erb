@@ -16,10 +16,10 @@
  <%= i.text_field :phone %>
 </div>
 <div class="field">
- <%= select('product', 'category_id', Category.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
+    <%= i.grouped_collection_select(:category_id, Category.where('category_id is null'), :child, :param_name, :id, :param_name ) %>
 </div>
 <div class="field">
- <%= select('product', 'city_id', City.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
+ <%= i.select('city_id', City.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
 </div>
 <div class="field">
  <%= i.label :price, 'Стоимость:' %> <br />

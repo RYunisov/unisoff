@@ -1,5 +1,5 @@
 <ul> 
 <% @category.each do |c| %>
-		<li><span><%= link_to c.param_name, c %></span> <span style='color: #555555;'><%= c.product.count %></span></li> 
+    <li><span><%= link_to c.param_name, c %></span> <span style='color: #555555;'><%= c.child.empty? ? c.product.count : c.child.product.count %></span></li> 
 <% end %>	
 </ul>

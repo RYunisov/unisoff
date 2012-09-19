@@ -12,7 +12,7 @@
     <%= link_to pro.category.param_name, pro.category unless pro.category.nil? %>
   </span><br> 
   <span class='dt'>
-    <%= rus_date(pro.created_at.to_s) %>
+    <%= pro.created_at.to_formatted_s(:short) %>
   </span>	  
   </td>
   <td style='width: 18%;'>

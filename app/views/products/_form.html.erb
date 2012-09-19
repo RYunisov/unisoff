@@ -16,7 +16,7 @@
  <%= i.text_field :phone %>
 </div>
 <div class="field">
-    <%= i.grouped_collection_select(:category_id, Category.where('category_id is null'), :child, :param_name, :id, :param_name ) %>
+    <%= i.grouped_collection_select(:category_id, Category.where(:category_id => nil), :child, :param_name, :id, :param_name, { :include_blank => 'Без категории' }) %>
 </div>
 <div class="field">
  <%= i.select('city_id', City.all.collect {|p| [ p.param_name, p.id ]}, { :include_blank => 'Без категории' }) %>
@@ -31,7 +31,10 @@
 </div>
   <p>
   <label>Добавить изображение</label> <br />
-    <%= image_tag(@product.image_url) if @product.image? %> 
+   <% if @product.image? %>
+     <%= image_tag(@product.image_url) %>
+     <%= link_to 'Delete', @product.image_url, :method => 'Delete' %> <br />
+   <% end %>
     <%= i.file_field :image %>
 	<%= i.hidden_field :image_cache %>
   </p>

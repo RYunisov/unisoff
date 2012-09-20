@@ -1,0 +1,6 @@
+<ul>
+	<% @product.each do |p| %>
+		<li><%= link_to p.title,  search_path(:query => p.title), :remote => true, :method => :get %></li>
+	<% end %>
+</ul>    
+

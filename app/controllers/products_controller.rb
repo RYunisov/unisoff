@@ -2,7 +2,7 @@
 class ProductsController < ApplicationController
 
  before_filter :correct_user, :only => [:edit, :update]
- before_filter :f_city, :except => [:update, :create, :show, :all_products, :search ]
+ before_filter :f_city, :except => [:update, :create, :show, :all_products, :search]
  before_filter :category
  before_filter :signed_user, :only => [:destroy, :edit, :update] 
 
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
       format.json { render :json => @product.map(&:attributes) }
     end  
   end
-  
+
   def index
     if params[:query] and !current_city.nil? 
       @product = Product.search_by_city(params[:query], current_city.id)
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.new(params[:product])
   else
     @product = Product.new(params[:product])
-	@product[:user_id] = 0
+    @product[:user_id] = 0
   end
 	if @product.save
 		flash[:success] = "Объявление #{@product.title} добавлено"
@@ -79,7 +79,7 @@ private
 
   def signed_user
     unless signed_in?
-      redirect_to :back, :notice => 'Не хватает прав, для редактирования' 
+      redirect_to product_path, :notice => 'Не хватает прав, для редактирования' 
     end
   end
 
@@ -89,15 +89,15 @@ private
 
   def f_city
   	unless params[:value].nil? 
- 	 unless params[:value].empty? 
-       cookies[:city_id] = params[:value]
-       @product = Product.where('city_id = ?', current_city.id)
-	   render :text => "<i>#{current_city.param_name}</i>"
-	 else
-	   cookies[:city_id] = nil
-	   @product = Product.all
-	   render :text => "<i>Все города</i>"
-	 end
+     	 unless params[:value].empty? 
+         cookies[:city_id] = params[:value]
+         @product = Product.where('city_id = ?', current_city.id)
+    	   render :text => "<i>#{current_city.param_name}</i>"
+    	 else
+    	   cookies[:city_id] = nil
+    	   @product = Product.all
+    	   render :text => "<i>Все города</i>"
+    	 end
   	else
   	  @product = Product.all
   	end  

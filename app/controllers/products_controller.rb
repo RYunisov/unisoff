@@ -2,10 +2,18 @@
 class ProductsController < ApplicationController
 
  before_filter :correct_user, :only => [:edit, :update]
- before_filter :f_city, :except => [:update, :create, :show, :all_products ]
+ before_filter :f_city, :except => [:update, :create, :show, :all_products, :search ]
  before_filter :category
  before_filter :signed_user, :only => [:destroy, :edit, :update] 
 
+  def search 
+    @product = Product.search(params[:query])
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json { render :json => @product.map(&:attributes) }
+    end  
+  end
+  
   def index
     if params[:query] and !current_city.nil? 
       @product = Product.search_by_city(params[:query], current_city.id)

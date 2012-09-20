@@ -38,6 +38,7 @@ Sale::Application.routes.draw do
 
  match '/new', :to => "products#new"
  match '/search', :to => "products#index"
+ match '/autocomplete', :to => "products#search"
  match '/admin', :to => "roots#cities"
 
   # The priority is based upon order of creation:

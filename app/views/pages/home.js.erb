@@ -1,2 +1,10 @@
 $(".list").html("<%= escape_javascript(render('shared/list')) %>");
-
+$('#query').change(function(){
+  text = document.getElementById('query')
+  $.ajax(
+      url = '<%= root_path %>',
+      data = text.value
+      ).done(function(){
+          $('.droplist').html("<%= escape_javascript(render('shared/list')) %>")
+          })
+})

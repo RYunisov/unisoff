@@ -56,6 +56,15 @@ div.field, div.action {
   margin-bottom: 10px;
 }
 
+.droplist {
+    background: none repeat scroll 0 0 white;
+    margin: -32px 5px;
+    padding: 5px 10px;
+    position: absolute;
+    width: 568px;
+    display: none;
+}
+
 /* Links */
 
 header nav a {
@@ -128,6 +137,13 @@ nav ul li {
 
 nav ul li a {
   padding: 0 5px;
+}
+
+.droplist ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+  width: 100%;
 }
 
 nav ul li a:visited {
@@ -276,7 +292,7 @@ ul.user {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   height: 35px;
   border: 0px;
-  border-radius: 15px 15px 15px 15px;
+/*  border-radius: 15px 15px 15px 15px; */
   padding: 0 10px;
   font-size: 1.2em;
   font-style: italic;

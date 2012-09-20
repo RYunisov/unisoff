@@ -6,6 +6,11 @@ class PagesController < ApplicationController
     @title = "Home"
 	@category = Category.all
 	@city = City.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @category }
+    end
   end
 
   def contact

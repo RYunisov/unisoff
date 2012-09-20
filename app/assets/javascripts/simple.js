@@ -7,7 +7,7 @@ $(document).ready(function(){
       $(this).css({'color': '#f3f3f3', 'font-style':'italic'});
    })
 
-  //Автозаполнение для поисковой стороки.
+//Автозаполнение для поисковой стороки.
     $('#query').keyup(function(event){
       var text = '&query='+this.value
       if ( this.value.length >= 3 ) {
@@ -25,7 +25,6 @@ $(document).ready(function(){
     })
 
 });
-
 
 function fadeto(item) {
  $(item).removeClass('opacity');

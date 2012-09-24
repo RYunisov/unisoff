@@ -9,6 +9,7 @@
                                  :title => "Удалить #{@product.title}?" %><% end %></span>
 </div>
 <h2><%= @product.title %></h2>
+<hr>
 <%= @product.content %>
 <%= @product.price %>
 <%= @product.phone %> 
@@ -17,4 +18,3 @@
 <%= link_to 'Еще', all_product_path(@product) %>
 </span><br />
 <%= image_tag(@product.image_url) if @product.image? %> 
-

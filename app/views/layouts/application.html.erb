@@ -7,9 +7,12 @@
 	<%= javascript_include_tag :application %>
   </head>
   <body>
+  	<div class='search'>
+  		<%= render 'shared/search' %>
+  		<%= render 'layouts/options_city'%>
+	</div>
     <div class = "container">
 	<%= render 'layouts/header' %>
-	<%= render 'layouts/options_city'%>
     <section class="round">
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}") %>
@@ -20,3 +23,4 @@
 	</div>
   </body>
 </html>
+   

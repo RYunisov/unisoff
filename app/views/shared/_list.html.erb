@@ -1,8 +1,10 @@
 <table>				
 <% @product.each do |pro| %>
 <tr>
-  <td style='width:10%'>
-	<%= image_tag(pro.image.thumb.url) if pro.image? %>
+  <td >
+    <div >    
+       <%= image_tag pro.images.last.photo.url(:small) %>
+    </div >
   </td>
   <td style='width:70%;'>
   <span class='ttl'>

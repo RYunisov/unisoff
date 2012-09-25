@@ -1,6 +1,6 @@
 <%= @product.city_id.nil? ? 'Все города' : @product.city.param_name %> 
-<%= '> '+@product.category.parent.param_name unless @product.category.parent.nil?%>
-<%= '> '+@product.category.param_name unless @product.category.nil? %>
+<%= @product.category.nil? ? '' : '> '+@product.category.parent.param_name %>
+<%= @product.category.nil? ? '' : '> '+@product.category.param_name %>
 <div class="ctrl">
 <span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %>
 <% if !current_user.nil? and current_user.admin? %>    |
@@ -17,4 +17,6 @@
 <%= @product.user.login unless @product.user.nil? %> •		
 <%= link_to 'Еще', all_product_path(@product) %>
 </span><br />
-<%= image_tag(@product.image_url) if @product.image? %> 
+<% @product.images.each  do |image| %>
+    <%= image_tag image.photo.url(:small) %> 
+<% end %>    

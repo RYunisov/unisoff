@@ -31,10 +31,5 @@
 </div>
   <p>
   <label>Добавить изображение</label> <br />
-   <% if @product.image? %>
-     <%= image_tag(@product.image_url) %>
-     <%= link_to 'Delete', @product.image_url, :method => 'Delete' %> <br />
-   <% end %>
-    <%= i.file_field :image %>
-	<%= i.hidden_field :image_cache %>
+    <%= render :partial => 'images/form', :locals => { :i => i } %>
   </p>

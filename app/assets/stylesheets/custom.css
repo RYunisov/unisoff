@@ -58,17 +58,27 @@ div.field, div.action {
   margin-bottom: 10px;
 }
 
+div.list img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #595959;
+    border-radius: 3px;
+}
+
 .blockform {
   position: relative;
   top: -3px;
-  width: 600px;
+  width: 710px;
   margin:0px auto;
 }
 
 .droplist {
     background: none repeat scroll 0 0 #FFFFFF;
-    width: 523px;
- /*   margin:-33px 29%; */
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);    
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);       
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 95%;
+    margin: 3px 0px;
     position: relative;
 }
 /*
@@ -322,16 +332,14 @@ ul.user {
 /*  border-radius: 15px 15px 15px 15px; */
   padding: 0 10px;
   font-size: 1.2em;
-  font-style: italic;
   color: #cfcfcf;
-  width: 95%;
+  width: 90%; 
 }
+
 .edit {
   display:block; 
   font:2.3em Georgia;
   color: whitesmoke;
-  margin: -65px 60px;
-
   text-shadow:none;
 }
 

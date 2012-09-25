@@ -1,9 +1,12 @@
 class Product < ActiveRecord::Base
 
-mount_uploader :image, ImageUploader
+  attr_accessible :content, :price, :status, :title, :phone, :category_id, :city_id, :email, :images_attributes
 
-  attr_accessible :content, :price, :status, :title, :phone, :image, :image_cache, :remove_image, :category_id, :city_id, :email
-
+  has_many :images, :dependent => :destroy
+  
+  accepts_nested_attributes_for :images, :reject_if => :all_blank,
+                                         :allow_destroy => true
+  
   belongs_to :user
   belongs_to :city
   belongs_to :category

@@ -1,4 +1,12 @@
 Sale::Application.routes.draw do
+  get "images/new"
+
+  get "images/create"
+
+  get "images/update"
+
+  get "images/delete"
+
 #  get "roots/index"
 
 #  get "relationships/create,"

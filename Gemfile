@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
-gem 'gravatar_image_tag', '1.1.3'
-gem 'carrierwave', '0.6.2'
-gem 'mini_magick', '3.4'
+#gem 'carrierwave', '0.6.2'
+#gem 'mini_magick', '3.4'
+gem 'paperclip', '3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

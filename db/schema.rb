@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914120347) do
+ActiveRecord::Schema.define(:version => 20120925135634) do
 
   create_table "categories", :force => true do |t|
     t.string   "param_name"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20120914120347) do
   end
 
   add_index "cities", ["param_name"], :name => "index_cities_on_param_name", :unique => true
+
+  create_table "images", :force => true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "messages", :force => true do |t|
     t.string   "from"
@@ -48,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20120914120347) do
     t.string   "phone"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "image"
     t.integer  "category_id"
     t.integer  "city_id"
     t.string   "email"

@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
 
+  #require '/unicode/rustext.rb'  
+
   attr_accessible :content, :price, :status, :title, :phone, :category_id, :city_id, :email, :images_attributes
 
   has_many :images, :dependent => :destroy
@@ -18,8 +20,12 @@ class Product < ActiveRecord::Base
 
   validates_numericality_of :price, :only_integer => true
 
-  before_validation :match_phones
+  before_save :caps_title
+  def caps_title
+    self.title = self.title.mb_chars.capitalize
+  end
 
+  before_validation :match_phones
   def match_phones
    self.phone = self.phone.gsub(/\D/, '').to_i
   end
@@ -30,16 +36,39 @@ class Product < ActiveRecord::Base
 
   def self.search(query)
 	if query
-	  find(:all, :conditions => ['( title LIKE ? OR content LIKE ? )', "%#{query}%", "%#{query}%" ])
+	  find(:all, 
+           :conditions => ['( title LIKE ? OR content LIKE ? )', "%#{query}%", "%#{query}%" ], 
+           #:group => :title
+           )
 	else
 	  find(:all)
 	end
   end 
 
-  def self.search_by_city(query, current_city)
-	if query 
-	  find(:all, :conditions => ['( title LIKE ? OR content LIKE ? ) and ( city_id = ? ) ', "%#{query}%", "%#{query}%", "#{current_city}" ])
-	else
+  def self.search_by_city(query, city)
+    @text = ''  
+	if query
+        query.title.split.each do |q|
+          @text += %( (title LIKE "%#{q}%" OR content LIKE "%#{q}%") AND ( id <> :id ) ) 
+          @text += %( OR ) unless q == query.title.split.last
+        end    
+        if city.blank?
+          where("#{@text}
+                   AND ( category_id = :category_id )", 
+                   { :query => "%#{query.title}%", 
+                     :id => query.id, 
+                     :category_id => query.category_id })
+        else  
+           where("#{@text}
+                    AND ( category_id = :category_id ) 
+                    AND ( city_id = :city_id)",
+                    { :query => "%#{query.title}%", 
+                      :id => query.id, 
+                      :category_id => query.category_id,
+                      :city_id => city.id })
+        
+	    end
+    else
       all
 	end
   end 

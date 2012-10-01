@@ -1,6 +1,8 @@
+<span>
 <%= @product.city_id.nil? ? 'Все города' : @product.city.param_name %> 
 <%= @product.category.nil? ? '' : '> '+@product.category.parent.param_name %>
 <%= @product.category.nil? ? '' : '> '+@product.category.param_name %>
+</span>
 <div class="ctrl">
 <span><%= link_to 'Назад', root_path %> | <%= link_to 'Редактировать', edit_product_path(@product) %>
 <% if !current_user.nil? and current_user.admin? %>    |
@@ -20,3 +22,15 @@
 <% @product.images.each  do |image| %>
     <%= image_tag image.photo.url(:small) %> 
 <% end %>    
+<br />
+<% unless @altproduct.empty? %>
+<hr>
+<span style='font: 0.9em Verdana'>Обратите внимание:</span>
+  <% @altproduct.each do |a| %>
+    <div class='list'>
+      <%= image_tag a.images.last.photo.url(:small) unless a.images.empty? %><br />
+      <%= link_to a.title, a %><br />
+      <%= a.price %> руб
+    </div> 
+  <% end %>
+<% end %>

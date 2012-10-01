@@ -2,8 +2,8 @@
 <% @product.each do |pro| %>
 <tr>
   <td >
-    <div >    
-       <%= image_tag pro.images.last.photo.url(:small) %>
+    <div >   
+       <%= image_tag pro.images.last.photo.url(:small) unless pro.images.empty? %>
     </div >
   </td>
   <td style='width:70%;'>

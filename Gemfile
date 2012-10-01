@@ -5,6 +5,9 @@ gem 'rails', '3.2.6'
 #gem 'mini_magick', '3.4'
 gem 'paperclip', '3.2.0'
 
+# FOR RUSSIA TEXT
+gem 'unicode', '0.4.3'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

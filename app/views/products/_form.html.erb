@@ -5,7 +5,7 @@
 <div class="field">
  <% unless current_user.nil? %>
    <%= i.label :email, 'Email:' %> <br />
-   <%= i.text_field :email, :value => "#{current_user.email}" %>
+   <%= i.text_field :email %>
  <% else %>
    <%= i.label :email, 'Email:' %> <br />                          
    <%= i.text_field :email %>   

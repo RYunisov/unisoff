@@ -61,7 +61,7 @@ div.field, div.action {
 div.list img {
     width: 70px;
     height: 70px;
-    border: 1px solid #595959;
+/*    border: 1px solid #595959; */
     border-radius: 3px;
 }
 
@@ -336,9 +336,14 @@ ul.user {
   width: 90%; 
 }
 
+#query:hover {
+ box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 3px rgba(0, 0, 0, 0.898) inset;
+
+}
+
 .edit {
   display:block; 
-  font:2.3em Georgia;
+  font:2.0em Georgia;
   color: whitesmoke;
   text-shadow:none;
 }

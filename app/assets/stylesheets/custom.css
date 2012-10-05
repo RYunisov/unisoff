@@ -5,7 +5,7 @@
 
 body {
   background: whitesmoke url(/uploads/furley_bg.png) repeat;
-  font: 12px Verdana, Sans Serif;
+  font: 12px "museo-sans-rounded", Verdana, Sans Serif;
   text-shadow: 0px 1px white;
 }
 
@@ -117,7 +117,7 @@ a:visited {
 }
 
 .category ul li {
-  font: 11px Helvetic, Sans-serif;
+  /* font: 11px Helvetic, Sans-serif; */
   list-style-type: none;
   display: inline-block;
   padding: 0.2em 0;

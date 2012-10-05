@@ -3,12 +3,13 @@
  <%= i.text_field :title %>
 </div>
 <div class="field">
- <% unless current_user.nil? %>
-   <%= i.label :email, 'Email:' %> <br />
-   <%= i.text_field :email %>
- <% else %>
+ <% if i.object.new_record? %>
    <%= i.label :email, 'Email:' %> <br />                          
-   <%= i.text_field :email %>   
+   <% unless current_user.nil? %>
+       <%= i.text_field :email, :value => "#{current_user.email}"  %>   
+   <% else %>
+       <%= i.text_field :email %>
+   <% end %>
  <% end%>		 
 </div>
 <div class="field">

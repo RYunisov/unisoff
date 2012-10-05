@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @title = @product.title
-    current_city = '' if current_city.nil?
+    current_city.nil? ? '' : current_city
     @altproduct = Product.search_by_city(@product, current_city)
   end
   

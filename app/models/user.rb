@@ -8,18 +8,20 @@ class User < ActiveRecord::Base
   has_many :products, :dependent => :destroy
 
   has_many :messages, :foreign_key => 'to',
-    		              :dependent => :destroy
+    		          :dependent => :destroy
 
   has_many :relationships, :foreign_key => "follower_id",
-		                       :dependent => :destroy
+		                   :dependent => :destroy
 
-  has_many :following, :through => :relationships, :source => :followed
+  has_many :following, :through => :relationships, 
+                       :source => :followed
 
   has_many :reverse_relationships, :foreign_key => "followed_id",
                                    :class_name => "Relationship",
                                    :dependent => :destroy
 
-  has_many :followers, :through => :reverse_relationships, :source => :follower
+  has_many :followers, :through => :reverse_relationships, 
+                       :source => :follower
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -27,12 +29,12 @@ class User < ActiveRecord::Base
                     :length => { :maximum => 50 }
   
   validates :email, :presence => true,
-  					        :format => { :with => email_regex },
-				          	:uniqueness => { :case_sensitive => false }
+  				    :format => { :with => email_regex },
+				    :uniqueness => { :case_sensitive => false }
   
   validates :password, :presence => true,
                        :confirmation => true,
-					             :length => { :within => 6..40 }
+					   :length => { :within => 6..40 }
 
   before_save :encrypt_password
 

@@ -1,3 +1,4 @@
+# encoding=utf-8 
 class Product < ActiveRecord::Base
 
   #require '/unicode/rustext.rb'  
@@ -48,21 +49,20 @@ class Product < ActiveRecord::Base
   def self.search_by_city(query, city)
     @text = ''  
 	if query
-        query.title.split.each do |q|
-          @text += %( (title LIKE "%#{q}%" OR content LIKE "%#{q}%") AND ( id <> :id ) ) 
+        # FIX russian encoding and "()-" symbol in title
+        query.title.scan(/\p{Word}+/u).each do |q|
+          @text += %( (title LIKE "%#{q}%" OR content LIKE "%#{q}%")  ) 
           @text += %( OR ) unless q == query.title.split.last
         end    
         if city.blank?
-          where("#{@text}
-                   AND ( category_id = :category_id )", 
-                   { :query => "%#{query.title}%", 
+          where("(#{@text}) AND ( id <>:id ) AND ( category_id = :category_id )", 
+                   {
                      :id => query.id, 
                      :category_id => query.category_id })
+        
         else  
-           where("#{@text}
-                    AND ( category_id = :category_id ) 
-                    AND ( city_id = :city_id)",
-                    { :query => "%#{query.title}%", 
+          where("( #{@text} ) AND ( id <> :id ) AND ( category_id = :category_id ) AND ( city_id =:city_id )",
+                    { 
                       :id => query.id, 
                       :category_id => query.category_id,
                       :city_id => city.id })
